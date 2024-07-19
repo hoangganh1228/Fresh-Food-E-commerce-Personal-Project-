@@ -1,1 +1,38 @@
-header Header
+nav.navbar.navbar-expand-lg.pb-3
+  .container
+    a.navbar-brand(href="#")
+      img.img-fluid(
+        alt="" 
+        src="./imgs/logoo.png"
+        )
+    button.navbar-toggler(
+      aria-label="Toggle navigation" 
+      aria-expanded="false" 
+      aria-controls="navbarSupportedContent" 
+      data-bs-target="#navbarSupportedContent" 
+      data-bs-toggle="collapse" 
+      type="button"
+      )
+      span.navbar-toggler-icon
+        i.bi.bi-list
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.m-auto.mb-2.mb-lg-0
+        li.nav-item
+          a.nav-link(href="#") Home
+        li.nav-item
+          a.nav-link(href="#") Service
+        li.nav-item
+          a.nav-link(href="#") Blog
+        li.nav-item
+          a.nav-link(href="#") About
+        li.nav-item
+          a.nav-link(href="#") Contact
+      form.d-flex
+        input.px-2.search(
+          aria-label="Search" 
+          placeholder="Search" 
+          type="search"
+          )
+        button.btn1.me-2.px-3(type="submit") Search
+        span
+          i.bi.bi-bag-plus
