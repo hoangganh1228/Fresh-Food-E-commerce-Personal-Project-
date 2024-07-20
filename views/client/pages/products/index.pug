@@ -15,14 +15,15 @@ block main
                     a(href="#" class="list-group-item list-group-item-action") RAU, CỦ, NẤM, TRÁI CÂY
                     a(href="#" class="list-group-item list-group-item-action") DẦU ĂN, NƯỚC CHẤM, GIA VỊ
             .col-md-10 
-                .category-title RAU LÁ
                 .row 
-                    .col-md-3
-                        .product-card
-                            img(src="./imgs/chilli.jpg" class="img-fluid" alt="Gạo trắng Thiên Nhật túi 5kg")
-                            h5 Gạo trắng Thiên Nhật túi 5kg
-                            p.product-price 90.000đ
-                            p.text-decoration-line-through (18.000đ/kg)
-                            button.btn.btn-success Thêm vào giỏ
- 
-                    
+                    each item in products
+                        .col-md-3
+                            .product-card
+                                img(src=item.thumbnail class="img-fluid" alt=item.title)
+                                p #{item.title}
+                                p.product-price #{item.newPrice}
+                                p.product-price #{item.price}
+                                p.text-decoration-line-through (#{item.discountPercentage})
+                                button.btn.btn-success Thêm vào giỏ
+        
+                                
