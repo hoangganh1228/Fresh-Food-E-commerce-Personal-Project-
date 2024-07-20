@@ -1,4 +1,28 @@
 extends ../../layouts/default.pug 
+include ../../mixins/box-head.pug 
 
 block main 
-    h1 Trang danh sách sản phẩm
+
+    .container.my-3 
+        .row
+          .col-12
+            +box-head("Danh sách sản phẩm")
+        .row.my-4
+            .col-md-2 
+                .list-group
+                    a(href="#" class="list-group-item list-group-item-action") KHUYẾN MÃI SỐC
+                    a(href="#" class="list-group-item list-group-item-action") THỊT, CÁ, TRỨNG, HẢI SẢN
+                    a(href="#" class="list-group-item list-group-item-action") RAU, CỦ, NẤM, TRÁI CÂY
+                    a(href="#" class="list-group-item list-group-item-action") DẦU ĂN, NƯỚC CHẤM, GIA VỊ
+            .col-md-10 
+                .category-title RAU LÁ
+                .row 
+                    .col-md-3
+                        .product-card
+                            img(src="./imgs/chilli.jpg" class="img-fluid" alt="Gạo trắng Thiên Nhật túi 5kg")
+                            h5 Gạo trắng Thiên Nhật túi 5kg
+                            p.product-price 90.000đ
+                            p.text-decoration-line-through (18.000đ/kg)
+                            button.btn.btn-success Thêm vào giỏ
+ 
+                    

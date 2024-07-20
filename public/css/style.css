@@ -135,7 +135,7 @@ p {
 
 /* <!-- ================================================================= --> */
 .about {
-    background: url(./imgs/abut.jpg)no-repeat;
+    background: url(../imgs/abut.jpg)no-repeat;
     background-size: cover;
     height: 90vh;
     width: 100%;
@@ -336,7 +336,7 @@ p {
 /* =============contact================== */
 
 .contact {
-    background: url(./imgs//cont.jpg);
+    background: url(../imgs/cont.jpg);
     background-size: cover;
     width: 100%;
 }
@@ -426,3 +426,41 @@ p {
 .footer p {
     color: rgb(13, 172, 13);
 }
+
+.product-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.inner-title {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.product-price {
+    color: red;
+}
+
+.product-original-price {
+    text-decoration: line-through;
+    color: grey;
+}
+
+.product-discount {
+    color: red;
+}
+
+.category-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #28a745; /* Green color */
+    border-bottom: 2px solid #28a745; 
+    /* display: inline; */
+    padding: 0 10px;
+}
+
