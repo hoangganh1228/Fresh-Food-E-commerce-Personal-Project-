@@ -47,3 +47,10 @@ module.exports.index = async (req, res) => {
         pagination: objectPagination
     })
 }
+
+module.exports.changeStauts = async (req, res) => {
+    const status = req.params.status; 
+    const id = req.params.id;
+    await Product.updateOne({_id: id}, {status: status});
+    res.redirect("back");
+}
