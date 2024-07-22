@@ -12,12 +12,12 @@ module.exports = (query) => {
         },
         {
             name: "Dừng hoạt động",
-            status: "inactive",
+            status: "inactive", 
             class: ""
         }
     ]
 
-    if(query.status) {
+        if(query.status) {
         const index = filterStatus.findIndex(item => item.status == query.status);
         filterStatus[index].class = "active"
     } else {
