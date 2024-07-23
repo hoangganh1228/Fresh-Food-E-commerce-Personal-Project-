@@ -32,7 +32,7 @@ block main
                         th Hình ảnh
                         th Tiêu đề
                         th Giá
-                        //- th Vị trí
+                        th Vị trí   
                         th Trạng thái
                         //- th Người tạo
                         //- th Người cập nhật
@@ -56,6 +56,14 @@ block main
                                 )
                             td #{item.title}
                             td #{item.price}
+                            td 
+                                input(
+                                    type="number"
+                                    value=item.position
+                                    style="width: 60px"
+                                    min="1"
+                                    name="position" 
+                                )
                             td  
                                 if(item.status == "active")
                                     a(
@@ -97,5 +105,14 @@ block main
         id="form-delete-item"
         data-path = `${prefixAdmin}/products/delete`
     ) 
+
+    form(
+        action = ""
+        method = "POST"
+        id="form-delete-item"
+        data-path = `${prefixAdmin}/products/delete`
+    ) 
+
+    
 
     script(src="/admin/js/product.js")
