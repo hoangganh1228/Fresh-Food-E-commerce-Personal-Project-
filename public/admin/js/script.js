@@ -160,7 +160,6 @@ if(showAlert) {
 const uploadImage = document.querySelector("[upload-image]");
 if(uploadImage) {
     const uploadImageInput = uploadImage.querySelector("[upload-image-input]");
-    console.log(uploadImageInput);
     const uploadImagePreview = uploadImage.querySelector("[upload-image-preview]")
 
     uploadImageInput.addEventListener("change", (e) => {
@@ -169,6 +168,7 @@ if(uploadImage) {
             uploadImagePreview.src = URL.createObjectURL(file)
         }
     })
+ 
 }
 
 // End Upload Image
