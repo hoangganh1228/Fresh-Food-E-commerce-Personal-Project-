@@ -20,7 +20,7 @@ block main
                         .col-md-3
                             .product-card
                                 img(src=item.thumbnail class="img-fluid" alt=item.title)
-                                p #{item.title}
+                                a(href=`/products/${item.slug}`) #{item.title}
                                 p.product-price #{item.newPrice}
                                 p.product-price #{item.price}
                                 p.text-decoration-line-through (#{item.discountPercentage})
