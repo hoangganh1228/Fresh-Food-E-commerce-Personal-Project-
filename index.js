@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require('path');   
 const methodOverride = require('method-override')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
@@ -28,6 +29,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.set("views", `${__dirname}//views`);
 app.set("view engine", "pug");
+
+
+// Tiny MCE
+app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')));
+//End Tiny MCE
+
 
 // Flash
 
