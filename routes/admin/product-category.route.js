@@ -17,7 +17,7 @@ router.post(
     "/create", 
     upload.single('thumbnail'),
     uploadCloud.upload,
-    validate.creatPost,   
+    validate.createPost,   
     controller.createPost,
 );
 
