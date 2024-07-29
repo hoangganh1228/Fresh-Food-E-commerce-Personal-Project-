@@ -2,22 +2,59 @@ const ProductCategory = require("../../models/product-category.model")
 
 const systemConfig = require("../../config/system")
 const createTreeHelper = require("../../helpers/createTree")
-
-
+const searchHelper = require("../../helpers/search")
+const filterStatusHelper = require("../../helpers/filterStatus")
+const paginationHelper = require("../../helpers/pagination")
+const Product = require("../../models/products.model")
 
 module.exports.index = async (req, res) => {
     let find = {
         deleted: false
     }
+    
+    const filterStatus = filterStatusHelper(req.query)
+    const objectSearch = searchHelper(req.query);
 
-    const records = await ProductCategory.find(find);   
+    if(objectSearch.regex) {
+        find.title = objectSearch.regex;
+    }
+
+    if(req.query.status) {
+        find.status = req.query.status;
+    }
+
+    const countProductsCategory = await ProductCategory.countDocuments(find);
+    
+    let objectPagination = paginationHelper(
+        {
+            currentPage: 1,
+            limitItems: 8
+        },
+        req.query,
+        countProductsCategory
+    )
+
+    const records = await ProductCategory.find(find)
+    .limit(objectPagination.limitItems)
+    .skip(objectPagination.skip);;   
 
     const newRecords =  createTreeHelper.tree(records);
 
     res.render("admin/pages/products-category/index", {
         pageTitle: "Trang danh mục sản phẩm",
-        records: newRecords
+        records: newRecords,
+        keyword: objectSearch.keyword,
+        filterStatus: filterStatus,
+        pagination: objectPagination
     })
+}
+
+module.exports.changeStauts = async (req, res) => {
+    const status = req.params.status; 
+    const id = req.params.id;
+    await ProductCategory.updateOne({_id: id}, {status: status});
+    req.flash('success', `Cập nhật trạng thái thành công sản phẩm!`);
+    res.redirect("back");
 }
 
 // [GET] /admin/products-category/create
