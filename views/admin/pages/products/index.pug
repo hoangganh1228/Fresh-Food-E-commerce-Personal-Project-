@@ -102,9 +102,14 @@ block main
                                                 ) Dừng hoạt động
                                     td 
                                         p #{item.accountFullName}
-                                    td
                                         p 
                                             +formatDate(item.createdBy.createdAt)
+                                    td 
+                                        - const updatedBy = item.updatedBy.slice(-1)[0];
+                                        if(updatedBy)
+                                            p #{updatedBy.accountFullName}
+                                            p 
+                                                +formatDate(updatedBy.updatedAt)
                                         
                                     td      
                                         a(
