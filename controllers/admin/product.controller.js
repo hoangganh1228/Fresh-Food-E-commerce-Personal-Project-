@@ -1,5 +1,6 @@
 const Product = require("../../models/products.model")
 const ProductCategory = require("../../models/product-category.model");
+const Account = require("../../models/account.model");
 
 const systemConfig = require("../../config/system")
 
@@ -52,6 +53,15 @@ module.exports.index = async (req, res) => {
     .limit(objectPagination.limitItems)
     .skip(objectPagination.skip);
     // console.log(products);
+
+    for(const product of products) {
+        const user = await Account.findOne({
+            _id: product.createdBy.account_id
+        })
+        if(user) {
+            product.accountFullName = user.fullName
+        }
+    }
 
     res.render("admin/pages/products/index", {
         pageTitle: "Trang sản phẩm",
@@ -153,6 +163,9 @@ module.exports.createPost = async (req, res) => {
         req.body.position = parseInt(req.body.position);
     }
     
+    req.body.createdBy = {
+        account_id: res.locals.user.id
+    }
 
     const product = new Product(req.body);
     await product.save();
