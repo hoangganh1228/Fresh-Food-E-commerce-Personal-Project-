@@ -1,0 +1,47 @@
+
+mixin product-item1(item)
+  .col-lg-4.py-2
+    .card.p-2
+      .card-body
+        .star
+          span
+            i.bi.bi-star-fill
+          span
+            i.bi.bi-star-fill
+          span
+            i.bi.bi-star-fill
+          span
+            i.bi.bi-star-fill
+          span
+            i.bi.bi-star-fill
+        img.img-fluid.pb-3(
+          alt="" 
+          src=`${item.thumbnail}`
+          )
+        h4.head1 #{item.title}
+        p.per1 #{item.price}
+        h4.head1 #{item.priceNew}$
+        button.btnc.my-4 ADD TO CART
+
+mixin product-item2(item)
+  .col-lg-6
+    .card
+      .row
+        .col-lg-6
+          img.img-fluid(
+            alt="" 
+            src=`${item.thumbnail}`
+            )
+        .col-lg-6.p-5
+          span
+            i.bi.bi-star-fill
+          span
+            i.bi.bi-star-fill
+          span
+            i.bi.bi-star-fill
+          span
+            i.bi.bi-star
+          h5.head1 #{item.title}
+          p.per1 #{item.price}
+          h5.head1 #{item.priceNew}
+    
