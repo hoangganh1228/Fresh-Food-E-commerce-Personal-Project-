@@ -92,7 +92,6 @@ module.exports.create = async (req, res) => {
         deleted: false
     }
 
-
     const records = await ProductCategory.find(find);
 
     const newRecords =  createTreeHelper.tree(records);
@@ -104,20 +103,30 @@ module.exports.create = async (req, res) => {
 
 // [POST] /admin/products-category/create
 module.exports.createPost = async (req, res) => {
-    if(req.body.position == "") {
-        const count = await ProductCategory.countDocuments();
-        req.body.position = count + 1;
+    // console.log(res.locals.role.permissions);
+    const permissions = res.locals.role.permissions;
+    if(permissions.includes("products-category_create")) {
+        if(req.body.position == "") {
+            const count = await ProductCategory.countDocuments();
+            req.body.position = count + 1;
+        } else {
+            req.body.position = parseInt(req.body.position)
+        } 
+    
+        req.body.createdBy = {
+            account_id: res.locals.user.id
+        }
+    
+        const record = new ProductCategory(req.body);
+        await record.save();
+        
+        res.redirect(`${systemConfig.prefixAdmin}/products-category`)
+
     } else {
-        req.body.position = parseInt(req.body.position)
-    } 
-
-    req.body.createdBy = {
-        account_id: res.locals.user.id
+        return;
     }
+    
 
-    const record = new ProductCategory(req.body);
-    await record.save();
-    res.redirect(`${systemConfig.prefixAdmin}/products-category`)
 
 }  
 
@@ -178,6 +187,6 @@ module.exports.editPatch = async (req, res) => {
         $push: { updatedBy: updatedBy }
     });
 
-    res.redirect("back")
+    res.redirect(`${systemConfig.prefixAdmin}/products-category`);
 
 }
