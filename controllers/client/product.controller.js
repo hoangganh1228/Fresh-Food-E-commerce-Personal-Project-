@@ -1,4 +1,5 @@
 const Product = require("../../models/products.model")
+const ProductCategory = require("../../models/product-category.model");
 
 module.exports.index = async (req, res) => {
 

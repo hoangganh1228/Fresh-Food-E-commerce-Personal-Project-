@@ -1,8 +1,8 @@
 extends ../../layouts/default.pug 
 include ../../mixins/box-head.pug 
+include ../../mixins/sub-menu.pug
 
 block main 
-
     .container.my-3 
         .row
           .col-12
@@ -10,10 +10,8 @@ block main
         .row.my-4
             .col-md-2 
                 .list-group
-                    a(href="#" class="list-group-item list-group-item-action") KHUYẾN MÃI SỐC
-                    a(href="#" class="list-group-item list-group-item-action") THỊT, CÁ, TRỨNG, HẢI SẢN
-                    a(href="#" class="list-group-item list-group-item-action") RAU, CỦ, NẤM, TRÁI CÂY
-                    a(href="#" class="list-group-item list-group-item-action") DẦU ĂN, NƯỚC CHẤM, GIA VỊ
+                    - const pathProduct = "/products"
+                    +sub-menu(layoutProductsCategory, pathProduct)
             .col-md-10 
                 .row 
                     each item in products

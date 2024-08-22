@@ -1,0 +1,8 @@
+mixin sub-menu(items, path)
+  ul(class="category-list list-unstyled")
+    each item in items
+      //- div #{`${path}/${item.slug}`}
+      li(class="category-item ")
+        a(href=`${path}/${item.slug}` class="list-group-item list-group-item-action") #{item.title} 
+      if item.children && item.children.length > 0
+        +sub-menu(item.children, path)
