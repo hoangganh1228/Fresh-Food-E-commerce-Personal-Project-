@@ -23,6 +23,8 @@ router.post(
     controller.createPost,
 );
 
+router.delete("/delete/:id", controller.deleteItem);
+
 router.get("/edit/:id", controller.edit);
 
 router.patch(
