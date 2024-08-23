@@ -18,7 +18,8 @@ mixin product-item1(item)
           alt="" 
           src=`${item.thumbnail}`
           )
-        h4.head1 #{item.title}
+        h4.inner-title 
+          a(href=`/products/detail/${item.slug}`) #{item.title}
         p.per1 #{item.price}
         h4.head1 #{item.priceNew}$
         button.btnc.my-4 ADD TO CART
@@ -42,7 +43,7 @@ mixin product-item2(item)
           span
             i.bi.bi-star
           h5.inner-title 
-            a(href=`/products/${item.slug}`) #{item.title}
+            a(href=`/products/detil/${item.slug}`) #{item.title}
           p.per1 #{item.price}
           h5.head1 #{item.priceNew}
     

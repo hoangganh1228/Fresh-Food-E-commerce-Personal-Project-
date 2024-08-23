@@ -32,11 +32,23 @@ module.exports.detail = async (req, res) => {
     
     try {
         let find = {
-            slug: req.params.slug,
+            slug: req.params.slugCategory,
             deleted: false
         }
     
         const product = await Product.findOne(find);
+
+        if(product.product_category_id) {
+            const category = await Product.findOne({
+                _id: product.product_category_id,
+                deleted: false,
+                status: "active"
+            })
+
+            product.category = category;
+        }
+
+        product.priceNew = productHelper.priceNewProduct(product);
     
         res.render("client/pages/products/detail", {
             pageTitle: product.title,
