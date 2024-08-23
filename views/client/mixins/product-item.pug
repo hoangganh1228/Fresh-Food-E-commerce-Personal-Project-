@@ -41,7 +41,8 @@ mixin product-item2(item)
             i.bi.bi-star-fill
           span
             i.bi.bi-star
-          h5.head1 #{item.title}
+          h5.inner-title 
+            a(href=`/products/${item.slug}`) #{item.title}
           p.per1 #{item.price}
           h5.head1 #{item.priceNew}
     
