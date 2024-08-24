@@ -22,6 +22,19 @@ block main
                                 p.product-price #{item.newPrice}
                                 p.product-price #{item.price}
                                 p.text-decoration-line-through (#{item.discountPercentage})
-                                button.btn.btn-success Thêm vào giỏ
+                                form(
+                                    action=`/cart/add/${item.id}`
+                                    method="POST"
+                                )
+                                    input(
+                                        class="form-control mb-2 d-none"
+                                        type="number"
+                                        name="quantity"
+                                        value="1"
+                                        min="1"
+                                    )            
+                                    button(
+                                        class="btn btn-success"
+                                    ) Thêm vào giỏ
         
                                 

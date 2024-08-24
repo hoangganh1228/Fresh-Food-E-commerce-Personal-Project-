@@ -1,4 +1,4 @@
-//- include ../mixins/alert.pug
+include ../mixins/alert.pug
 doctype html
 html
   head
@@ -9,7 +9,7 @@ html
     //- link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css")
     link(rel="stylesheet", href="/admin/css/style.css")
   body
-    //- +alert-success(2000)
+    +alert-success(2000)
     if(role.permissions.length > 0)
       include ../partials/header.pug
     
