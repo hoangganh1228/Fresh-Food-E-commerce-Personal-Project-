@@ -27,12 +27,19 @@ nav.navbar.navbar-expand-lg.pb-3
           a.nav-link(href="#") About
         li.nav-item
           a.nav-link(href="#") Contact
-      form.d-flex
-        input.px-2.search(
+      form(
+        class="d-flex"
+        action="/search"        
+        method="GET"
+      )
+        input(
+          class="px-2 search"
           aria-label="Search" 
-          placeholder="Search" 
+          placeholder="Tìm kiếm sản phẩm" 
           type="search"
-          )
+          name="keyword"
+          value=keyword
+        )
         button.btn1.me-2.px-3(type="submit") Search
         span
           i.bi.bi-bag-plus
