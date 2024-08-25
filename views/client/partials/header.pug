@@ -42,4 +42,4 @@ nav.navbar.navbar-expand-lg.pb-3
         )
         button.btn1.me-2.px-3(type="submit") Search
         span
-          i.bi.bi-bag-plus
+          a(class="bi bi-bag-plus" href="/cart") Giỏ hàng (#{miniCart ? miniCart.totalQuantity : 0})
