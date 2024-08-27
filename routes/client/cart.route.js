@@ -11,6 +11,4 @@ router.get("/update/:productId/:quantity", controller.update);
 
 router.get("/delete/:productId", controller.delete);
 
-
-
 module.exports = router;
