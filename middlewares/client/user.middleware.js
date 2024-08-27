@@ -5,12 +5,13 @@ module.exports.infoUser = async (req, res, next) => {
     const user = await User.findOne({
       tokenUser: req.cookies.tokenUser,
       deleted: false,
-      status: true
-    }).select("-pasword")
-    
+      status: "active"
+    }).select("-password");
+
     if(user) {
-      res.local.user = user;
+      res.locals.user = user;
     }
   }
+
   next();
 }

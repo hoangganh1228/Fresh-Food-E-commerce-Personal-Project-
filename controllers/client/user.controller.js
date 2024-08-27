@@ -13,11 +13,11 @@ module.exports.register = async (req, res) => {
 module.exports.registerPost = async (req, res) => {
   // console.log(req.body);
 
-  const existEmail  = await User.findOne({
+  const existEmail = await User.findOne({
     email: req.body.email
   })
 
-  if(existEmail ) {
+  if(existEmail) {
     req.flash("error", "Email đã tồn tại!");
     res.redirect("back");
     return;
@@ -27,11 +27,10 @@ module.exports.registerPost = async (req, res) => {
   const user = new User(req.body);
   user.save();
 
-  res.cookie("tokenUser", user.tokenUser);
+  // res.cookie("tokenUser", user.tokenUser);
 
   res.redirect("/");
 
-  res.send("OK");
   
 }
 
@@ -73,3 +72,9 @@ module.exports.loginPost = async (req, res) => {
   res.cookie("tokenUser", user.tokenUser);
   res.redirect("/");
 }
+
+// [GET] /user/logout
+module.exports.logout = async (req, res) => {
+  res.clearCookie("tokenUser");
+  res.redirect("/");
+};
