@@ -27,6 +27,8 @@ nav.navbar.navbar-expand-lg.pb-3
           a.nav-link(href="#") About
         li.nav-item
           a.nav-link(href="#") Contact
+        li.nav-item
+          a.nav-link(href="/user/register") Đăng ký
       form(
         class="d-flex"
         action="/search"        
@@ -43,3 +45,4 @@ nav.navbar.navbar-expand-lg.pb-3
         button.btn1.me-2.px-3(type="submit") Search
         span
           a(class="bi bi-bag-plus" href="/cart") Giỏ hàng (#{miniCart ? miniCart.totalQuantity : 0})
+          
