@@ -29,6 +29,8 @@ nav.navbar.navbar-expand-lg.pb-3
           a.nav-link(href="#") Contact
         if(user) 
           li.nav-item
+            a(href="/user/info") #{user.fullName}
+          li.nav-item
             a(href="/user/logout") Đăng xuất 
         else 
           li.nav-item
