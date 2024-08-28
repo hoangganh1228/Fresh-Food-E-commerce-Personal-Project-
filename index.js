@@ -20,6 +20,7 @@ database.connect();
 const app = express();
 const port = process.env.PORT;
 
+
 app.use(express.static(`${__dirname}/public`));
 
 app.use(methodOverride('_method'))
@@ -53,4 +54,10 @@ routeAdmin(app);
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`);
+})
+
+app.get("*", (req, res) => {
+    res.render("client/pages/errors/404", {
+        pageTitle: "404 Not Found",
+    });
 })
