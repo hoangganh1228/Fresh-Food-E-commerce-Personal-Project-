@@ -5,6 +5,8 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const moment = require('moment');
+const compression = require('compression');
+const helmet = require('helmet');
 
 const flash = require('express-flash');
 require("dotenv").config();
@@ -35,6 +37,23 @@ app.set("view engine", "pug");
 // Tiny MCE
 app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')));
 //End Tiny MCE
+
+app.use(compression({
+    threshold: 1024, // Chỉ nén các phản hồi lớn hơn 1KB
+    level: 6,        // Nén với mức độ 6
+    filter: (req, res) => {
+      const contentType = res.getHeader('Content-Type');
+      // Chỉ nén nếu nội dung là HTML, CSS, JS, hoặc JSON
+      if (contentType && /text\/html|text\/css|application\/javascript|application\/json/.test(contentType)) {
+        return true;
+      }
+      return false; // Bỏ qua nén cho các loại nội dung khác
+    }
+}));
+
+// Helmet
+app.use(helmet());
+// End Helmet
 
 
 // Flash
