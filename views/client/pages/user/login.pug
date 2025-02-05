@@ -1,6 +1,7 @@
 extends ../../layouts/default.pug
 include ../../mixins/alert.pug
 
+
 block main
   +alert-error(5000)
   .container.my-5
@@ -35,4 +36,4 @@ block main
               class="btn btn-primary btn-block"
             ) Đăng nhập
 
-        a(href="/user/password/forgot") Quên mật khẩu?
+        //- a(href="/user/password/forgot") Quên mật khẩu?
